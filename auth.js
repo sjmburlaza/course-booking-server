@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken')
-const secret = 'CourseBookingAPI'
+const jwt = require('jsonwebtoken');
+const secret = 'CourseBookingAPI';
 
 module.exports.createAccessToken = (user) => {
 	const data = {
@@ -8,20 +8,20 @@ module.exports.createAccessToken = (user) => {
 		isAdmin: user.isAdmin
 	}
 
-	return jwt.sign(data, secret, {})
+	return jwt.sign(data, secret, {});
 }
 
 module.exports.verify = (req, res, next) => {
-	let token = req.headers.authorization
+	let token = req.headers.token;
 
 	if (typeof token !== 'undefined') {
-		token = token.slice(7, token.length)
+		token = token.slice(7, token.length);
 
 		return jwt.verify(token, secret, (err, data) => {
-			return (err) ? res.send({ auth: 'failed' }) : next()
+			return (err) ? res.send({ auth: 'failedzz' }) : next()
 		})
 	} else {
-		return res.send({ auth: 'failed' })
+		return res.send({ auth: 'failedxx' })
 	}
 }
 
