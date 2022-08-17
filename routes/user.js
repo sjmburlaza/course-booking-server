@@ -18,13 +18,14 @@ router.post('/login', (req, res) => {
 });
 
 router.get('/details', auth.verify, (req, res) => {
-	const user = auth.decode(req.headers.authorization)
+    console.log(req.headers.token)
+	const user = auth.decode(req.headers.token)
     UserController.get({ userId: user.id }).then(user => res.send(user))
 });
 
 router.post('/enroll', auth.verify, (req, res) => {
 	const params = {
-		userId: auth.decode(req.headers.authorization).id,
+		userId: auth.decode(req.headers.token).id,
 		courseId: req.body.courseId
 	}
     UserController.enroll(params).then(result => res.send(result))
