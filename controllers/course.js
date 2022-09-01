@@ -12,7 +12,8 @@ module.exports.add = (params) => {
 	let course = new Course({
 		name: params.name,
 		description: params.description,
-		price: params.price
+		price: params.price,
+		image: params.image
 	})
 
 	return course.save().then((course, err) => {
@@ -28,7 +29,8 @@ module.exports.update = (params) => {
 	const updates = {
 		name: params.name,
 		description: params.description,
-		price: params.price
+		price: params.price,
+		image: params.image
 	}
 
 	return Course.findByIdAndUpdate(params.courseId, updates).then((doc, err) => {
