@@ -15,7 +15,7 @@ const CourseSchema = new mongoose.Schema({
 	},
 	image: {
 		type: String,
-		// required: [true, "Image link is required"]
+		required: [true, "Image link is required"]
 	},
 	isActive: {
 		type: Boolean,
